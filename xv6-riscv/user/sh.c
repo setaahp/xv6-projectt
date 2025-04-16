@@ -75,7 +75,42 @@ runcmd(struct cmd *cmd)
   case EXEC:
     ecmd = (struct execcmd*)cmd;
     if(ecmd->argv[0] == 0)
-      exit(1);
+      exit(0);
+      ////////////////
+    if (ecmd->argv[0] && strcmp(ecmd->argv[0], "!") == 0) {
+      int total_len = 0;
+    
+      for (int i = 1; ecmd->argv[i]; i++) {
+        total_len += strlen(ecmd->argv[i]);
+        if (ecmd->argv[i+1])
+          total_len++;
+      }
+    
+      if (total_len > 20) {
+        write(2, "Message too long\n", 17);
+      } else {
+        for (int i = 1; ecmd->argv[i]; i++) {
+          char *msg = ecmd->argv[i];
+          for (int j = 0; msg[j] != '\0'; j++) {
+            if (msg[j] == 'o' && msg[j+1] == 's') {
+              write(2, "\033[0;34mos\033[0m", 13);
+              j++;
+            } else {
+              write(2, &msg[j], 1);
+            }
+          }
+          if (ecmd->argv[i+1])
+            write(2, " ", 1);
+        }
+        char nl = '\n';
+        write(2, &nl, 1);
+      }
+    
+      exit(0);
+    }
+    
+        
+        /////////////// 
     exec(ecmd->argv[0], ecmd->argv);
     fprintf(2, "exec %s failed\n", ecmd->argv[0]);
     break;
