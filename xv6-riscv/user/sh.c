@@ -94,6 +94,7 @@ runcmd(struct cmd *cmd)
           for (int j = 0; msg[j] != '\0'; j++) {
             if (msg[j] == 'o' && msg[j+1] == 's') {
               write(2, "\033[0;34mos\033[0m", 13);
+              // write(2, "\033[0;34mos\033[0m", 2) ?
               j++;
             } else {
               write(2, &msg[j], 1);
@@ -104,6 +105,7 @@ runcmd(struct cmd *cmd)
         }
         char nl = '\n';
         write(2, &nl, 1);
+        //  write(2, "\n" , 1)
       }
     
       exit(0);
