@@ -60,6 +60,11 @@ sys_sleep(void)
     n = 0;
   acquire(&tickslock);
   ticks0 = ticks;
+  if (myproc()->current_thread) {
+    release(&tickslock);
+    sleepthread(n, ticks0);
+    return 0;
+  }
   while(ticks - ticks0 < n){
     if(killed(myproc())){
       release(&tickslock);
@@ -113,7 +118,7 @@ sys_thread(void)
 }
 
 uint64 
-sys_jointhread(void) 
+sys_jointhread(void)
 {
   int id;
   argint(0, &id);
