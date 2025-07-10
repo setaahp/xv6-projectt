@@ -1,3 +1,13 @@
+// Phase 2
+enum threadstate {
+THREAD_UNUSED,
+THREAD_RUNNABLE,
+THREAD_RUNNING,
+THREAD_JOINED,
+THREAD_SLEEPING
+};
+// Phase 2
+
 // Saved registers for kernel context switches.
 struct context {
   uint64 ra;
@@ -79,6 +89,17 @@ struct trapframe {
   /* 280 */ uint64 t6;
 };
 
+// Phase 2
+struct thread {
+enum threadstate state;
+struct trapframe *trapframe;
+uint id;
+uint join;
+int sleep_n;
+uint sleep_tick0;
+};
+// Phase 2
+
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // Per-process state
@@ -104,4 +125,9 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+
+  // Phase 2
+  struct thread threads[NTHREAD]; // Array of threads belonging to the process
+  struct thread *current_thread; // Pointer to the currently running thread
+  // Phase 2
 };
