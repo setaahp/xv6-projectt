@@ -22,6 +22,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+//Phase 2
+int thread(void *start_thread, int *stack_address, void *arg);
+int jointhread(int id);
+//Phase 2
 
 // ulib.c
 int stat(const char*, struct stat*);

@@ -37,3 +37,7 @@ entry("sbrk");
 entry("sleep");
 entry("uptime");
 entry("trigger");
+# Phase 2
+entry("thread");
+entry("jointhread");
+# Phase 2
