@@ -15,7 +15,6 @@ It includes experiments and modifications for learning **Operating Systems Princ
 
 ## 🔹 Requirements
 - Linux or macOS (or WSL on Windows)  
-- RISC-V toolchain (`riscv64-unknown-elf-gcc`, `riscv64-unknown-elf-ld`)  
 - [QEMU](https://www.qemu.org/) with RISC-V support  
 - `make`, `gcc`, and standard development tools  
 
