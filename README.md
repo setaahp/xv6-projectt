@@ -28,3 +28,16 @@ git clone https://github.com/setaahp/xv6-projectt.git
 cd xv6-projectt
 make
 make qemu
+
+---
+
+## 🔹 Repository Structure
+.
+├── kernel/         # Kernel source (proc, vm, trap, sys, etc.)
+├── user/           # User-space programs
+├── Makefile        # Build rules
+├── *.h, *.c        # Core kernel files (proc.h, param.h, etc.)
+└── README.md
+
+---
+
