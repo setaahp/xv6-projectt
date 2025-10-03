@@ -28,6 +28,7 @@ git clone https://github.com/setaahp/xv6-projectt.git
 cd xv6-projectt
 make
 make qemu
+```
 
 ---
 
@@ -40,4 +41,17 @@ make qemu
 └── README.md
 
 ---
+
+## 🔹 Acknowledgments
+
+- MIT xv6 Book (RISC-V)
+- xv6 original source from MIT PDOS group
+
+---
+
+## 🔹 License
+This project is for educational purposes only.
+The original xv6 code is under MIT license (see xv6 distribution).
+
+
 
